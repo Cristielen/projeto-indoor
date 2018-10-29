@@ -1,0 +1,14 @@
+{
+    "database": {
+        "server": "projetoindoor.database.windows.net", 
+        "user": "bandtec",
+        "password": "ProjetoIndoor100",
+        "database": "ProjetoIndoor",
+        "options": {
+            "encrypt": true
+        }
+    },
+    "security": {
+        "key": "CHAVE_SEGURANCA"
+    }
+}
