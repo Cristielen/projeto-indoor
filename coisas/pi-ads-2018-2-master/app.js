@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+var indexRouter = require('./index'); //
+
 var indexRouter = require('./routes/index');
 //var loginRouter = require('./routes/login');
 //var signupRouter = require('./routes/signup');
@@ -44,6 +46,7 @@ app.use('/index', indexRouter);
 //app.use('/signup', signupRouter);
 //app.use('/logout', logoutRouter);
 app.use('/leitura', leituraRouter);
+app.use(indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
