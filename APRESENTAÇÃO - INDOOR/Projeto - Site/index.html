@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>O.S - Organização Sensor</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<!-- Links do CSS que esta dando estilo para a pagina -->
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		
+		<style>
+			/* CSS INTERNO */
+			/* FORMATO DO FORMULARIO LOGIN */
+			.formlogin{
+				width: 165px;
+				float: right;
+				margin-top:20px;
+				margin-right:50px;
+			}
+			/* FORMATO DOS CAMPO INPUT */
+			.inputlogin{
+				margin: 10px 10px 10px 10px;
+			}
+			/* FORMATO DO BOTÃO */
+			.buttonlogin{
+				width: 100%;
+				font-size: 18px;
+				border-radius: 4px;
+				color: #fff;
+				height: 40px;
+				opacity: .8;
+				margin-bottom: 2px;
+				cursor: pointer;
+				background: #386c0b;
+				display: block;
+				border: none;
+				border-bottom: 1px solid #000;
+				border-right: 1px solid #000;
+				transition: 1s;
+				margin-left: 10px;
+				margin-top:-80px;
+				
+						}
+
+
+						/*FORMATO DOS CAMPOS DO CONTATO (FINAL DA PAGINA /CAIXA DE MENSAGEM)  */
+			.inputcontato{
+				margin: 0px 10px 10px 0px;
+			}	
+				/*FORMATO TOTAL DO FORMULARIO  */
+			.contato{
+				width: 80%;
+				font-size: 18px;
+				border-radius: 4px;
+				color: #fff;
+				height: 40px;
+				opacity: .8;
+				margin-bottom: 2px;
+				cursor: pointer;
+				background: #386c0b;
+				display: block;
+				border: none;
+				border-bottom: 1px solid #000;
+				border-right: 1px solid #000;
+				transition: 1s;
+				margin-left: 40px;
+				margin-top: 10px;
+			}
+		</style>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+
+		<!-- CABEÇALHO ONDE ESTÁ A IMAGEM DE FUNDO E O FORMULARIO -->
+			<header id="header">
+				<h1><a href="">O.S - Organização Sensores</a></h1>
+				
+				<!-- formulario de login -->
+				<form action="login.js" class="formlogin" method="post" tabindex="1">  
+					<input type="text" class="inputlogin" name="usuario" placeholder="Nome de usuário" required />  
+					<input type="password" class="inputlogin" name="senha" placeholder="Senha" required /> <br>
+					<button type="submit" class="buttonlogin">Entrar</button>
+				</form>	
+
+			</header>
+
+		<!-- Banner (ONDE É COLOCADO A IMAGEM DE FUNDO E O BOTÃO CADASTRO JUNTO COM O TEXTO PRINCIPAL)-->
+			<section id="banner">
+				<h2>Melhor maneira para controlar o seu cultivo indoor</h2>
+				<p>Ainda não é assinante? Cadastre-se</p>
+				<ul class="actions">
+					<li>
+						<a href="cadastro.html" class="button big">Criar Conta</a>
+					</li>
+				</ul>
+			</section>
+
+		<!-- One (PRIMEIRA SEÇÃO/SECTION - ONDE ESTA O PLANO DE FUNDO VERDE COM IMAGENS E TEXTO) -->
+			<section id="one" class="wrapper style1 align-center">
+				
+				 <div class="container"> <!--É UMA DIV DE UM BLOCO DA SEÇÃO/SECTION -->
+					 
+					<header>  <!--ESTA POSICIONANDO O TEXTO -->
+						 <h2>Esteja no controle!</h2> <!-- H2 É O TITULO   -->
+						<p>Sabemos que a qualidade final do seu cultivo é muito importante, por isso nós da O.S - Organização Sensores fazemos o controle da temperatura e umidade da sua estufa indoor. Prezamos para que você tenha mais qualidade de vida!</p>
+					</header>
+					 
+					<div class="row 200%"> <!--ESTA SEPARANDO A SEÇÃO VERDE EM 3 BLOCOS PEQUENOS  -->
+						 
+						<section class="4u 12u$(small)"> <!--PRIMEIRA PARTE COM IMAGEM E ESCRITA -->
+							<i class="icon big rounded fa-clock-o"></i>
+							<p>Saiba a temperatura exata da sua estufa a qualquer hora.<br>Faça consultas para se certificar que suas plantas estão recebendo o calor adequado, monitore a umidade do ambiente para que suas plantas não morram. </p>
+						</section>
+						
+						<section class="4u 12u$(small)"> <!-- SEGUNDA PARTE COM IMAGEM E ESCRITA -->
+							<i class="icon big rounded fa-comments"></i>
+							<p>Entre em contato a qualquer hora, fale direto com nosso atendente.</p>
+						</section>
+						
+						 <section class="4u$ 12u$(small)"> <!--TERCEIRA PARTE COM IMAGEM E ESCRITA -->
+							<i class="icon big rounded fa-user"></i>
+							<p>Tenha uma conta só sua, onde você poderá consultar dados atravez de gráfico, e fazer o mapeamento do andamento do seu cultivo.</p>
+						</section>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- Two  SEGUNDA SEÇÃO/SECTION ONDE SE LOCALIZA AS IMAGENS DAS ESTUFAS-->
+			<section id="two" class="wrapper style2 align-center">
+
+				<div class="container"> <!--É UMA DIV DE UM BLOCO DA SEÇÃO/SECTION -->
+					
+					<header> <!--ESTA POSICIONANDO O TEXTO -->
+						<h2>Conheça mais sobre nossa parceira E-cult</h2>
+						<p>Com inovação e qualidade cuidando do seu cultivo indoor.</p>
+					</header>
+
+					<div class="row"> <!--É UMA DIV DE ONDE AS IMAGENS ESTÃO POSICIONADAS DENTRO DA SEÇÃO/SECTION  -->
+
+						 <section class="feature 6u 12u$(small)"> <!--SEPARA E POSICIONA AS IMAGENS NOS SEUS RESPECTIVOS LUGARES -->
+							<img src="images/estufa1.jpg" width="398" alt="" />
+							<h3 class="title">Estufa indoor 33PF</h3>
+							<p></p>
+						</section>
+
+						<section class="feature 6u$ 12u$(small)"> <!--SEPARA E POSICIONA AS IMAGENS NOS SEUS RESPECTIVOS LUGARES -->
+							<img  src="images/estufa2.jpg" width="300" alt="" />
+							<h3 class="title">Estufa indoor 45P</h3>
+							<p></p>
+						</section>
+
+						<section class="feature 6u 12u$(small)"> <!--SEPARA E POSICIONA AS IMAGENS NOS SEUS RESPECTIVOS LUGARES -->
+							<img  src="images/estufa3.jpg" width="300" alt="" />
+							<h3 class="title">Estufa indoor SD-434</h3>
+							<p></p>
+						</section>
+
+						<section class="feature 6u$ 12u$(small)"> <!--SEPARA E POSICIONA AS IMAGENS NOS SEUS RESPECTIVOS LUGARES -->
+							<img src="images/estufa4.jpg" width="472" alt="" />
+							<h3 class="title">Estufa indoor LMH-3</h3>
+							<p></p>
+						</section>
+					</div>
+					
+					<!-- <footer>
+						<ul class="actions">
+							<li>
+								<a href="#" class="button alt big">Saiba mais</a>
+							</li>
+						</ul>
+					</footer> -->
+				</div>
+			</section>
+
+		<!-- Footer RODAPE DA PAGINA -->
+			<footer id="footer">
+				
+				<div class="container">
+					<div class="row">
+						
+						<section class="4u 6u(medium) 12u$(small)">
+							 <img id="ftRodape" src="images/logoEmpresa.png" width="400"> <!-- IMAGEM LOGO DO RODAPÉ -->
+						</section>
+						
+						<section class="4u 6u$(medium) 12u$(small)"> 
+								<h3>Contato</h3>
+								<ul class="icons">
+									<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								</ul>
+								<ul class="tabular">
+									<li>
+										<h3>Endereço</h3>
+										Av. Celso Galles Vins, 3.515<br>
+										CEP - 038557-012
+									</li>
+									<li>
+										<h3>Email</h3>
+										<a href="#">sensores.org.com.br</a>
+									</li>
+									<li>
+										<h3>Telefone</h3>
+										(11) 2247-5394	
+									</li>
+								</ul>
+						</section>
+						
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							
+							<!-- formulario de contato -->
+							<form action="" class="formcontato" method="post" tabindex="1">  
+									<input type="text" class="inputcontato" name="Email" placeholder="Coloque seu Email" required />  
+									<textarea rows="4" cols="50">Alguma dúvida? Nós estamos aqui!
+									</textarea>
+									<button type="submit" class="contato">Enviar Mensagem</button>
+								</form>	
+						</section>
+					</div>
+					
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li>
+						<li>E-cult <a href="http://templated.co"></a></li>
+						
+					</ul>
+				</div>
+
+			</footer>
+
+	</body>
+</html>

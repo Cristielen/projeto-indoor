@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro</title>
+    <style>
+        /* fontes da internet */
+        @charset "UTF-8";
+        @import url(font-awesome.min.css);
+        @import url("http://fonts.googleapis.com/css?family=Lato:300,400");
+        
+        /* corpo do site (Aqui está colocando a imagem de fundo e o tamanho dela) */
+        body{
+            background-image: url("images/img.jpg");
+            background-size: cover;
+        }
+        
+        /* imagem do logo (Ajustando tamanho e altura) */
+        #logo{
+            margin-left:530px;
+            margin-top:-130px;
+        }
+
+        
+        /* Ajustando tamanho da fonte, tipo, cor, altura */
+        h1 a{
+            text-decoration: underline;
+            text-decoration: none;
+            font-weight:300;
+            color: #fff;
+            margin: 0 0 1em 0;
+            font-family: "Lato", Helvetica, sans-serif;
+            font-size: 15pt;
+		    line-height: 1.65em;
+        }
+        
+        /* Ajustando o formulario todo(Tamanho e posição) */
+        .container {
+        margin-top:-20px;
+        margin-left:450px;
+        width: 50%;
+        
+        }
+    /* Largura dos campos e fonte */
+    .form-contact {
+    width: 100%;
+    font-family: "Lato", Helvetica, sans-serif;
+    }
+
+    /* tamanho do input, cor da letra, tamnho da fonte, cor de fundo, bordas, transparencia das caixas ... */
+    .form-contact-input {
+    width: 65%;
+    color: #292929;
+    font-size: 18px;
+    background-color: #E9E9E9;
+    border: 1px solid #E9E9E9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    text-indent: 20px;
+    }
+
+    /* Ajusta o botão */
+    .form-contact-button {
+    width: 65%;
+    font-size: 18px;
+    border-radius: 4px;
+    color: #fff;
+    height: 40px;
+    opacity: .8;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: #386c0b;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    transition: 1s;
+    }
+    
+    /* Link do texto */
+    a{
+        text-decoration: underline;
+        text-decoration: none;
+        font-weight:400;
+        color: #fff; 
+        font-size: 20pt;
+		line-height: 1.65em;
+        text-align: center;
+    }
+
+    /* Efeito quando passa o mouse no botão */
+    .form-contact-button:hover {
+    opacity: 1;
+    }
+        </style>
+    
+    
+</head>
+
+
+<body>
+    <!-- link para ir para home (lado esquedo superior da tela) -->
+    <h1><a href="index.html" title="Home"><img width="50" id="homeicone" src="images/icon.png">O.S - Organização Sensores</a></h1>
+    
+    <!-- Logo  -->
+    <a href="index.html" ><img title="Home" id="logo" src="images/logoEmpresa.png" width="230"></a>
+    
+    <!-- formulario cadastro (Ele esta dentro nde uma div) -->
+    <div class="container">  
+       
+        <!-- Salvar a pagina do codigo de cadastro javascript com nome "cad.js" -->
+        <form action="cad.js" class="form-contact" method="post" tabindex="1">  
+           <input type="text" class="form-contact-input" name="nome" placeholder="Nome Completo" required />  
+           <input type="text" class="form-contact-input" name="endereço" placeholder="Endereço" required />
+           <input type="text" class="form-contact-input" name="Telefone" placeholder="Telefone" required/>  
+           <input type="email" class="form-contact-input" name="email" placeholder="Email" required/> 
+           <input type="password" class="form-contact-input" name="senha" placeholder="Senha"required />
+           <input type="text" class="form-contact-input" name="usuario" placeholder="Nome de usuário"required />
+  
+           <button type="submit" class="form-contact-button">Enviar</button> 
+           <a href="Index.html" class="form-contact-button">Cancelar</button></a>
+        </form>  
+      </div> 
+</body>
+</html>
+
+
