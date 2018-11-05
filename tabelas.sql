@@ -1,0 +1,13 @@
+CREATE TABLE modelo_user (
+    id INT IDENTITY PRIMARY KEY,
+    nome NVARCHAR(100) NOT NULL,
+    user NVARCHAR (100) NOT NULL,
+    senha NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE leitura (
+    id INT IDENTITY PRIMARY KEY,
+    temperatura FLOAT NOT NULL,
+    umidade FLOAT NOT NULL,
+    momento DATETIME NOT NULL
+);

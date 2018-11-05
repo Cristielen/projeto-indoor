@@ -3,5 +3,5 @@ function isNull(element) {
 }
 
 module.exports = {
-    //isNull: isNull
+    isNull: isNull
 };

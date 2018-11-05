@@ -10,20 +10,20 @@ const Readline = SerialPort.parsers.Readline;
 // Acesso ao banco de dados SQL Server
 const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
-const TYPES = require('tedious').TYPES; 
+const TYPES = require('tedious').TYPES;
 
 // prevenir problemas com muitos recebimentos de dados do Arduino
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-// configuraÃ§Ãµes de acesso ao banco de dados
+// configurações de acesso ao banco de dados
 const cfg = {
-    "host": "projetoindoor.database.windows.net", // server name do banco de dados
-    "user": "bandtec", // login ("bandtec")
-    "pass": "ProjetoIndoor100", // senha do banco de dados
-    "db": "ProjetoIndoor" // nome da base de dados
+    "host": "testexyzwtrtwr.database.windows.net", // server name do banco de dados
+    "user": "adminbandtec", // login ("bandtec")
+    "pass": "b@ndtec2018", // senha do banco de dados
+    "db": "gf2018" // nome da base de dados
 };
 
-// configuraÃ§Ãµes da conexÃ£o com o banco de dados
+// configurações da conexão com o banco de dados
 const config = {
     server: cfg.host,
     userName: cfg.user,
@@ -41,99 +41,100 @@ const config = {
     }
 };
 
-// Estrutura que vai receber os dados do Arduino 
+// Estrutura que vai receber os dados do Arduino
 // e enviar para o banco de dados
 class LeitorArduino {
-	
+
     iniciarEscuta() {
-		
+
         SerialPort.list().then(entradasSeriais => {
-            
-            // este bloco trata a verificaÃ§Ã£o de Arduino conectado (inicio)            
-            
+
+            // este bloco trata a verificação de Arduino conectado (inicio)
+
             var entradasSeriaisArduino = entradasSeriais.filter(entradaSerial => {
-                return entradaSerial.vendorId == 2341 && entradaSerial.productId == 43;
+                return entradaSerial.vendorId == 2341 && entradaSerial.productId == 8037;
             });
-            
+
             if (entradasSeriaisArduino.length != 1){
-                throw new Error("Nenhum Arduino estÃ¡ conectado ou porta USB sem comunicaÃ§Ã£o ou mais de um Arduino conectado");
+                throw new Error("Nenhum Arduino está conectado ou porta USB sem comunicação ou mais de um Arduino conectado");
             }
 
             console.log("Arduino conectado na COM %s", entradasSeriaisArduino[0].comName);
-             
+
             return  entradasSeriaisArduino[0].comName;
 
-            // este bloco trata a verificaÃ§Ã£o de Arduino conectado (fim)
-                        
+
+            // este bloco trata a verificação de Arduino conectado (fim)
+
         }).then(arduinoCom => {
-            
+
              // este bloco trata o recebimento dos dados do Arduino (inicio)
-                        
+
             // o baudRate deve ser igual ao valor em
             // Serial.begin(xxx) do Arduino (ex: 9600 ou 115200)
-            var arduino = new SerialPort(arduinoCom, {baudRate: 9600});
-            
+            var arduino = new SerialPort(arduinoCom, {baudRate: 115200});
+
             const parser = new Readline();
             arduino.pipe(parser);
-            
+
             try {
 				conectarBanco();
 			} catch (e) {
 				throw e;
 				return;
 			}
-            
+
             console.error('Iniciando escuta do Arduino');
-            
-            // Tudo dentro desse parser.on(... 
-            // Ã© invocado toda vez que chegarem dados novos do Arduino
+
+            // Tudo dentro desse parser.on(...
+            // é invocado toda vez que chegarem dados novos do Arduino
             parser.on('data', (dados) => {
 				console.error(`Recebeu novos dados do Arduino: ${dados}`);
 				try {
 					// O Arduino deve enviar a temperatura e umidade de uma vez,
 					// separadas por ":" (temperatura : umidade)
-					const leitura = dados.split(':'); 
-					registrarLeitura(Number(leitura[0]), Number(leitura[1]));		
+					const leitura = dados.split(':');
+					registrarLeitura(Number(leitura[0]), Number(leitura[1]));
 				} catch (e) {
 					throw new Error(`Erro ao tratar os dados recebidos do Arduino: ${e}`);
 				}
 
 				// este bloco trata o recebimento dos dados do Arduino (fim)
             });
-            
+
         }).catch(error => console.error(`Erro ao receber dados do Arduino ${error}`));
-    } 
+    }
 }
 
-// funÃ§Ã£o que recebe valores de temperatura e umidade 
+// função que recebe valores de temperatura e umidade
 // e faz um insert no banco de dados
 function registrarLeitura(temperatura, umidade) {
 
 	console.log(`temperatura: ${temperatura}`);
 	console.log(`umidade: ${umidade}`);
-	
+
 	request = new Request(`
-	INSERT into leitura (temperatura, umidade, momento) 
+	INSERT into leitura (temperatura, umidade, momento)
 	values (@temperatura, @umidade, CURRENT_TIMESTAMP);
-	`, function(err, linhas) {  
-		 if (err) {  
+	`, function(err, linhas) {
+		 if (err) {
 			console.error(`Erro ao tentar gravar no banco: ${err} `);
 		 }  else {
 			console.log(`Registro salvo com sucesso. Linhas afetadas: ${linhas}`);
-		 } 
-		});  
-		
-	request.addParameter('temperatura', TYPES.Decimal, temperatura);  
-	request.addParameter('umidade', TYPES.Decimal , umidade);  
-	
+		 }
+		});
+
+	request.addParameter('temperatura', TYPES.Decimal, temperatura);
+	request.addParameter('umidade', TYPES.Decimal , umidade);
+
 	connection.execSql(request);
-	
+
 }
 
-// funÃ§Ã£o que solicita a conexÃ£o com o banco
+// função que solicita a conexão com o banco
 function conectarBanco() {
 	connection.on('connect', function (err) {
-		if (err) { 
+		if (err) {
 			throw new Error(`Erro ao conectar com o banco: ${err}`);
 		} else {
 			console.log('Conectado ao banco de dados!');
@@ -141,7 +142,7 @@ function conectarBanco() {
 	});
 }
 
-// constante de conexÃ£o com o banco de dados
+// constante de conexão com o banco de dados
 const connection = new Connection(config);
 
 // constante de leitura de dados do arduino

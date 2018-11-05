@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br; en" id="home">
    	<head>
-      	<title>Index</title>
+      	<title>Login</title>
      	<meta charset="UTF-8">
    	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
       	<meta name="msapplication-TileColor" content="#ffffff">
@@ -28,22 +28,45 @@
    	<body id="body">
       	<div class="row">
         	<div class="col-md-12 mx-auto">
-				<div class="row">
-					<div class="info col-md-12">Tela logada linda maravilhosa!</div>
-					<div class="info col-md-12">Informações do cookie:</div>
-					<br><br>
-					<div class="info col-md-12">Olá <b><%= session.user.nome %></b>!</div>
-					<div class="info col-md-12">Seu nome de usuário é <b><%= session.user.user %></b> e seu id é <b><%= session.user.id %></b>!</div>
+				<div class="col-md-6">
+					<form id="formLogin" method="post" onsubmit="autenticar(); return false;">
+						<div class="form-group">
+							<label for="loginUsername">Login: </label>
+							<input type="text" class="form-control" id="login" name="login">
+						</div>
+						<div class="form-group">
+							<label for="loginPassword">Senha: </label>
+							<input type="password" class="form-control" id="senha" name="senha">
+						</div>
+						<div>
+							<input type="submit" class="form-control btn btn-success" value="Entrar">
+						</div>
+					</form>
+					<div class="text-right"><a href="/signup">Cadastre-se</a></div>
+					<span id="span_mensagem"></span>
 				</div>
-				<br>
-                <div>
-                    <button class="btn btn-danger" type="button" onclick="logout();">Logout</button>
-                </div>
          	</div>
       	</div>
-        <script src="assets/js/main.js"></script>
-        <script>
-            
-        </script>
+    	<script src="assets/js/main.js"></script>
    	</body>
 </html>
+<script>
+	function autenticar() {
+		var dados = $('#formLogin').serialize();
+
+		$.ajax({
+				url : "login",
+				type: 'POST',
+				data : dados
+		})
+		.done(function(resposta){ 
+			window.location.href='grafico.html';
+		})
+		.fail(function(jqXHR, textStatus){ 
+			$('#span_mensagem').html(textStatus);
+		});
+
+		return false;
+	}
+	
+</script>

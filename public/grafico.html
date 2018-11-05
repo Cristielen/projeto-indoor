@@ -37,13 +37,19 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
 
-    <body id="body">
+    <body id="body" onload="iniciar()">
+		<div id="div_usuario" style="display: none;">
+			Bem vindo, <b id="b_usuario"></b>
+
+			<span style="margin-left: 5em"><a href="/logout">Sair</a></span>
+		</div>
+
         <div id="div_grafico"></div>
         
         <div style="margin-top: 2em">
 			<b>Médias:</b><br>
-				Umidade: <b id="b_media_temperatura"></b> <br>
-				Temperatura: <b id="b_media_umidade"></b> <br>
+			Temperatura: <b id="b_media_temperatura"></b> <br>
+			Umidade: <b id="b_media_umidade"></b> <br>
         </div>
 
     </body>
@@ -51,6 +57,12 @@
 
 
 <script>	
+
+	function iniciar() {
+		carregarUsuario();
+		carregarDadosGrafico();
+		setInterval(carregarMedias, 2500);
+	}
 
 	var chart;
 	
@@ -86,11 +98,9 @@
 
 	google.charts.setOnLoadCallback(() => {
 		chart = new google.charts.Line(document.getElementById('div_grafico'));
-		loadData();
-		setInterval(loadData, 2500);
+		carregarDadosGrafico();
+		setInterval(carregarDadosGrafico, 2500);
 	});
-	
-	setInterval(carregarMedias, 2500);
 
 
 
@@ -98,7 +108,7 @@
 		chart.draw(data, materialOptions);
 	}
 
-	function loadData() {
+	function carregarDadosGrafico() {
 		$.ajax({
 			cache: false,
 			method: "get",
@@ -124,6 +134,21 @@
 			},
 			error: function (e) {
 				console.log("Erro:", e);
+			}
+		});
+	}
+
+	function carregarUsuario() {
+		$.ajax({
+			cache: false,
+			method: "get",
+			url: "/login/sessao",
+			success: function (data) {
+				$('#b_usuario').html(data.nome);
+				$('#div_usuario').show();
+			},
+			error: function (e) {
+				window.location.href='login.html';
 			}
 		});
 	}
