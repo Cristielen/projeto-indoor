@@ -116,18 +116,22 @@
     <div class="container">  
        
         <!-- Salvar a pagina do codigo de cadastro javascript com nome "cad.js" -->
-        <form action="cad.js" class="form-contact" method="post" tabindex="1">  
-           <input type="text" class="form-contact-input" name="nome" placeholder="Nome Completo" required />  
-           <input type="text" class="form-contact-input" name="endereço" placeholder="Endereço" required />
-           <input type="text" class="form-contact-input" name="Telefone" placeholder="Telefone" required/>  
-           <input type="email" class="form-contact-input" name="email" placeholder="Email" required/> 
-           <input type="password" class="form-contact-input" name="senha" placeholder="Senha"required />
-           <input type="text" class="form-contact-input" name="usuario" placeholder="Nome de usuário"required />
+        <form action="Cadastro.js" class="form-contact" method="post" tabindex="1">  
+           <input type="text" class="form-contact-input" name="nome" id = "nome" placeholder="Nome Completo" required />  
+           <input type="text" class="form-contact-input" name="endereço" id = "endereço" placeholder="Endereço" required />
+           <input type="text" class="form-contact-input" name="Telefone" id = "telefone" placeholder="Telefone" required/>  
+           <input type="email" class="form-contact-input" name="email" id = "email" placeholder="Email" required/> 
+           <input type="password" class="form-contact-input" name="senha" id = "senha" placeholder="Senha" required />
+           <input type="password" class="form-contact-input" name="senhaconfirmar" id = "senhac" placeholder="Confirmar senha" required />
+           <input type="text" class="form-contact-input" name="usuario" id = "usuario" placeholder="Nome de usuário"required />
   
-           <button type="submit" class="form-contact-button">Enviar</button> 
+           <button type="submit" class="form-contact-button" >Enviar</button> 
            <a href="Index.html" class="form-contact-button">Cancelar</button></a>
+           
         </form>  
-      </div> 
+
+      </div>
+       
 </body>
 </html>
 
