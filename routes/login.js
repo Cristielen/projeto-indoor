@@ -13,7 +13,7 @@ router.post('/', (req, res, next) => {
 	try {
 			
 		// após o body, são os nomes dos campos no formulário	
-		var login = req.body.login;
+		var login = req.body.usuario;
 		var senha = req.body.senha;
 		
 		const msgErro = {'mensagem': 'Login e/ou senha inválidos!'};
@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 		} else {
 			console.log('tentando consulta no banco...');
 			// altere aqui o seu select de acordo com sua tabela
-			Database.query(`SELECT * FROM Cliente WHERE USUARIO = '${login}';`).then(results => {
+			Database.query(`SELECT * FROM Cliente WHERE usuario = '${login}';`).then(results => {
 				console.log(`Linhas: ${results.recordsets[0].length}`);
 				let linhas = results.recordsets[0];
 				if (linhas.length > 0) {

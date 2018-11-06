@@ -114,7 +114,7 @@
     <div class="container">  
        
         <!-- Frmulario de cadastro -->
-        <form id="formCad" class="form-contact" tabindex="1">  
+        <form id="formCad" class="form-contact" tabindex="1" onsubmit="return autenticar();">  
            <input type="text" class="form-contact-input" name="nome" id = "nome" placeholder="Nome Completo" required />  
            <input type="text" class="form-contact-input" name="endereco" id = "endereço" placeholder="Endereço" required />
            <input type="text" class="form-contact-input" name="telefone" id = "telefone" placeholder="Telefone" required/>  
@@ -129,6 +129,7 @@
       <span id="span_mensagem"></span>
 </body>
 </html>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
 <script>
 	function autenticar() {
 		var dados = $('#formCad').serialize();

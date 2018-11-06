@@ -6,7 +6,7 @@ var isNull = require('../script').isNull;
 // a princípio, não precisa mexer aqui
 router.get('/', (req, res, next) => {
     req.session.destroy();
-    res.redirect('/login.html'); // indique aqui para onde quer que o usuário vá após o logoff
+    res.redirect('/index.html'); // indique aqui para onde quer que o usuário vá após o logoff
 });
 
 module.exports = router;
