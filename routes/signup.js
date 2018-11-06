@@ -14,20 +14,23 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    let name = req.body.name;
-    let username = req.body.username;
-    let password = req.body.password;
+    let nome = req.body.nome;
+    let usuario = req.body.usuario;
+    let senha = req.body.senha;
+	let telefone = req.body.telefone;
+	let endereco = req.body.endereco;
+	let email = req.body.email;
 
-    if (isNull(name) || isNull(username) || isNull(password)) {
-        res.status(400).json({'error': 'Invalid name, username and/or password!'});
+    if (isNull(nome) || isNull(usuario) || isNull(senha) || isNull(telefone) || isNull(endereco) || isNull(email) {
+        res.status(400).json({'error': 'Invalid nome, usuario and/or senha!'});
     }
 
-    password = cryptr.encrypt(password);
+    senha = cryptr.encrypt(senha);
 
-    //console.log(`name: ${name}, username: ${username}, password: ${password}`);
+    //console.log(`nome: ${nome}, usuario: ${usuario}, senha: ${senha}`);
 
-    createUser(name, username, password).then(results => {
-        req.session.message = `User ${username} created succesfully! Please log in...`;
+    createUser(nome, usuario, senha).then(results => {
+        req.session.message = `User ${usuario} created succesfully! Please log in...`;
         res.status(302).redirect('/login');
     }).catch(error => {
         res.render('signup', {message: "Error creating user.", error: error});
@@ -35,14 +38,14 @@ router.post('/', (req, res, next) => {
 
 });
 
-function createUser(name, username, password) {
+function createUser(nome, usuario, senha) {
     return new Promise((resolve, reject) => {
         let create = undefined;
-        checkUser(username).then(exists => {
+        checkUser(usuario).then(exists => {
             create = !exists;
             console.log('create:', create);
             if (create) {
-                let querystring = `INSERT INTO modelo_user (nome, username, senha) VALUES ('${name}', '${username}', '${password}');`;
+                let querystring = `INSERT INTO modelo_user (nome, usuario, senha) VALUES ('${nome}', '${usuario}', '${senha}');`;
                 Database.query(querystring).then(results => {
                     resolve(results);
                 }).catch(error => {
@@ -58,8 +61,8 @@ function createUser(name, username, password) {
     });
 }
 
- function checkUser(username) {
-    let querystring = `SELECT * FROM modelo_user WHERE username = '${username}'`;
+ function checkUser(usuario) {
+    let querystring = `SELECT * FROM modelo_user WHERE usuario = '${usuario}'`;
     return new Promise((resolve, reject) => {
         Database.query(querystring).then(results => {
                 let exists = results.length > 0;

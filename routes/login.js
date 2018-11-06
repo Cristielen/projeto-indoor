@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 		} else {
 			console.log('tentando consulta no banco...');
 			// altere aqui o seu select de acordo com sua tabela
-			Database.query(`SELECT * FROM usuario WHERE login = '${login}';`).then(results => {
+			Database.query(`SELECT * FROM Cliente WHERE USUARIO = '${login}';`).then(results => {
 				console.log(`Linhas: ${results.recordsets[0].length}`);
 				let linhas = results.recordsets[0];
 				if (linhas.length > 0) {
@@ -32,8 +32,8 @@ router.post('/', (req, res, next) => {
 					if (senhaBanco === senha) {
 						let user = {
 							// mantenha "nome" e "login" nos antes dos ":"
-							nome: linhas[0].nome, // é 'nome' o nome de seu campo?
-							login: linhas[0].login, // é 'login' o nome de seu campo?
+							nome: linhas[0].nmCliente, // é 'nome' o nome de seu campo?
+							login: linhas[0].usuario, // é 'login' o nome de seu campo?
 						};
 						req.session.user = user;
 						res.status(200).send('ok');
